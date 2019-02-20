@@ -26,7 +26,8 @@ exports.handler = async (event, context) => {
   return {
     statusCode: 302,
     header: {
-      Location: process.env.URL || "http://localhost:9000";
-    }
+      Location: process.env.URL || "https://www.google.com"
+    },
+    body: null
   };
 };
