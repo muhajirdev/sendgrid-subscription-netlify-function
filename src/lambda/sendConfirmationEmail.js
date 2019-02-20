@@ -22,30 +22,30 @@ exports.handler = async (event, context) => {
 
   const msg = {
     template_id: "d-90a1e1c2111542229b30c31c13575635",
-    personalizations: {
-      dynamic_template_data: {
-        first_name: data.first_name
-      },
-      to: [
-        {
-          email: data.email,
-          name: `${data.first_name} ${data.last_name}`
-        }
-      ]
-    },
+    personalizations: [
+      {
+        dynamic_template_data: {
+          first_name: data.first_name,
+          url: getAddRecipientUrl(id)
+        },
+        to: [
+          {
+            email: data.email,
+            name: `${data.first_name} ${data.last_name}`
+          }
+        ]
+      }
+    ],
     from: {
       email: "no-reply@muhajirframe.com",
       name: "Muhammad Muhajir"
     }
   };
 
-  const request = {
-    body: msg,
-    method: "POST",
-    request: {
-      url: "/mail/send"
-    }
-  };
+  const request = {};
+  request.body = msg;
+  request.method = "POST";
+  request.url = "/v3/mail/send";
   await client.request(request);
 
   return {
