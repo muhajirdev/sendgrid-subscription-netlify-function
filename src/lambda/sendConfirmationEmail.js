@@ -43,7 +43,7 @@ exports.handler = async (event, context) => {
     body: msg,
     method: "POST",
     request: {
-      url: "/v3/contactdb/recipients"
+      url: "/mail/send"
     }
   };
   await client.request(request);
