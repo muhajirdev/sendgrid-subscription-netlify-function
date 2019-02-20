@@ -24,7 +24,9 @@ exports.handler = async (event, context) => {
   const [_, body] = await client.request(request);
 
   return {
-    statusCode: 200,
-    body: `Assigned ${data.email} as subscriber`
+    statusCode: 302,
+    header: {
+      Location: process.env.URL || "http://localhost:9000";
+    }
   };
 };
