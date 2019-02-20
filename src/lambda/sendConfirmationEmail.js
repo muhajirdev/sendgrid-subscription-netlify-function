@@ -1,3 +1,4 @@
+const templates = require("transactional-email-templates");
 import sgMail from "@sendgrid/mail";
 import Cryptr from "cryptr";
 
@@ -25,7 +26,7 @@ exports.handler = async (event, context) => {
       "Please confirm your email address by clicking the link below.",
       "We may need to send you critical information about our service and it is important that we have an accurate email address."
     ],
-    link: "http://www.mailgun.com/",
+    link: getAddRecipientUrl(id),
     linkCTA: "Confirm Email Address",
     linkColor: "#3A90D7",
     byline: "-- Syria Product",
