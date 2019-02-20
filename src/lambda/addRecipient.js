@@ -3,6 +3,23 @@ import Cryptr from "cryptr";
 
 const cryptr = new Cryptr("secret");
 
+const getHtmlRedirect = url => `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; URL='${url}'" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    Subscribed, you will be redirected. If not, please <a href="${url}">click here</a>
+  </body>
+</html>
+`;
+
 const { SENDGRID_APIKEY } = process.env;
 client.setApiKey(SENDGRID_APIKEY);
 
@@ -24,10 +41,12 @@ exports.handler = async (event, context) => {
   const [_, body] = await client.request(request);
 
   return {
-    statusCode: 302,
+    statusCode: 200,
     header: {
-      Location: process.env.URL || "https://www.google.com"
+      headers: {
+        "Content-Type": "text/html"
+      }
     },
-    body: null
+    body: getHtmlRedirect(process.env.URL)
   };
 };
