@@ -1,0 +1,29 @@
+{
+  "name": "@muhajirframe/netlify-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@sendgrid/client": "^6.3.0",
+    "@sendgrid/mail": "^6.3.1",
+    "cryptr": "^4.0.2",
+    "dotenv": "^6.2.0",
+    "netlify-lambda": "^1.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:lambda": "netlify-lambda serve src/lambda -c webpack.js",
+    "build:lambda": "netlify-lambda build src/lambda"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhajirframe/netlify-functions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muhajirframe/netlify-functions/issues"
+  },
+  "homepage": "https://github.com/muhajirframe/netlify-functions#readme"
+}
