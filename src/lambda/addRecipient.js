@@ -17,13 +17,10 @@ exports.handler = async (event, context) => {
   }
   const data = JSON.parse(cryptr.decrypt(input));
 
-  const request = {
-    body: [data],
-    method: "POST",
-    request: {
-      url: "/v3/contactdb/recipients"
-    }
-  };
+  const request = {};
+  request.body = [data];
+  request.method = "POST";
+  request.url = "/v3/contactdb/recipients";
   const [_, body] = await client.request(request);
 
   return {
