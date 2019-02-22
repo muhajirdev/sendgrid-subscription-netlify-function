@@ -6,7 +6,7 @@ const url = process.env.URL || "http://localhost:9000";
 const addRecipientUrl = `${url}/addRecipient`;
 const getAddRecipientUrl = id => `${addRecipientUrl}?id=${id}`;
 
-const { SENDGRID_APIKEY } = process.env;
+const { SENDGRID_APIKEY, TEMPLATE_ID, SENDER_NAME, SENDER_EMAIL } = process.env;
 client.setApiKey(SENDGRID_APIKEY);
 
 exports.handler = async (event, context) => {
@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
   const id = cryptr.encrypt(JSON.stringify(data));
 
   const msg = {
-    template_id: "d-90a1e1c2111542229b30c31c13575635",
+    template_id: TEMPLATE_ID,
     personalizations: [
       {
         dynamic_template_data: {
@@ -37,8 +37,8 @@ exports.handler = async (event, context) => {
       }
     ],
     from: {
-      email: "no-reply@muhajirframe.com",
-      name: "Muhammad Muhajir"
+      email: SENDER_EMAIL,
+      name: SENDER_NAME
     }
   };
 
