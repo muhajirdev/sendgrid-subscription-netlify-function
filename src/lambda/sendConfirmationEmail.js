@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
   
   if(event.httpMethod !== 'POST' || !event.body) {
      return {
-      statusCode: 200
+      statusCode: 200,
       headers: {
       "Access-Control-Allow-Origin" : "*",
       "Access-Control-Allow-Headers": "Content-Type"
