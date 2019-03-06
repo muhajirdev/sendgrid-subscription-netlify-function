@@ -56,7 +56,7 @@ exports.handler = async (event, context) => {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Methods': '*',
       'Access-Control-Max-Age': '2592000',
-       Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Credentials': 'true',
     },
     body: `Please check your email`
   };
