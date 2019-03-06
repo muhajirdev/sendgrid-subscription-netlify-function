@@ -10,6 +10,17 @@ const { SENDGRID_APIKEY, TEMPLATE_ID, SENDER_NAME, SENDER_EMAIL } = process.env;
 client.setApiKey(SENDGRID_APIKEY);
 
 exports.handler = async (event, context) => {
+  
+  if(event.httpMethod !== 'POST' || !event.body) {
+     return {
+      statusCode: 200
+      headers: {
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Headers": "Content-Type"
+      },
+      body: {}
+    }
+  }
 
   // When the method is POST, the name will no longer be in the event’s
   // queryStringParameters – it’ll be in the event body encoded as a query string
