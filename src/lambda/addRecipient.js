@@ -42,12 +42,13 @@ exports.handler = async (event, context) => {
 
   return {
     statusCode: 200,
-    header: {
-      headers: {
+    headers: {  
         "Content-Type": "text/html",
-        "Access-Control-Allow-Origin" : "*",
-        "Access-Control-Allow-Headers": "Content-Type"
-      }
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        'Access-Control-Allow-Methods': '*',
+        'Access-Control-Max-Age': '2592000',
+        'Access-Control-Allow-Credentials': 'true',
     },
     body: getHtmlRedirect(process.env.URL)
   };
